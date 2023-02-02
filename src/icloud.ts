@@ -64,6 +64,14 @@ export async function unlink(path: string): Promise<void> {
   return CloudStore.unlink(path);
 }
 
+export async function evictICloudItemItem(path: string): Promise<void> {
+  return CloudStore.evictICloudItemItem(path);
+}
+
+export async function isICloudItem(path: string): Promise<void> {
+  return CloudStore.isICloudItem(path);
+}
+
 export async function exist(path: string): Promise<boolean> {
   return CloudStore.exist(path);
 }

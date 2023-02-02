@@ -372,6 +372,42 @@ extension CloudStoreModule {
     }
 
     @objc
+    func evictICloudItemItem(_ path: String, resolver resolve: RCTPromiseResolveBlock,
+                rejecter reject: RCTPromiseRejectBlock) {
+        if(icloudInvalid(then: reject)) {return}
+
+        let url = URL(fileURLWithPath: path)
+        if(!FileManager.default.fileExists(atPath: url.path)) {
+            resolve(nil)
+            return;
+        }
+
+        do {
+            try FileManager.default.evictUbiquitousItemAtURL(at: url)
+        } catch {
+            reject("ERR_UNLINK", error.localizedDescription, NSError(domain: "", code: 0))
+            return
+        }
+        resolve(nil)
+    }
+
+    @objc
+    func isICloudItem(_ path: String, resolver resolve: RCTPromiseResolveBlock,
+                rejecter reject: RCTPromiseRejectBlock) {
+        if(icloudInvalid(then: reject)) {return}
+
+        let url = URL(fileURLWithPath: path)
+        if(!FileManager.default.fileExists(atPath: url.path)) {
+            resolve(nil)
+            return;
+        }
+
+        let result = FileManager.default.isUbiquitousItem(at: url)
+
+        resolve(result)
+    }
+
+    @objc
     func exist(_ path: String, resolver resolve: RCTPromiseResolveBlock,
                rejecter reject: RCTPromiseRejectBlock) {
         if(icloudInvalid(then: reject)) {return}

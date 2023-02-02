@@ -42,6 +42,10 @@ RCT_EXTERN_METHOD(copy: (NSString)pathFrom to:(NSString)pathTo with:(NSDictionar
                   rejecter: (RCTPromiseRejectBlock)reject)
 RCT_EXTERN_METHOD(unlink: (NSString)path resolver:(RCTPromiseResolveBlock)resolve
                   rejecter: (RCTPromiseRejectBlock)reject)
+RCT_EXTERN_METHOD(evictICloudItemItem: (NSString)path resolver:(RCTPromiseResolveBlock)resolve
+                  rejecter: (RCTPromiseRejectBlock)reject)
+RCT_EXTERN_METHOD(isItemItem: (NSString)path resolver:(RCTPromiseResolveBlock)resolve
+                  rejecter: (RCTPromiseRejectBlock)reject)
 RCT_EXTERN_METHOD(exist: (NSString)path resolver:(RCTPromiseResolveBlock)resolve
                   rejecter: (RCTPromiseRejectBlock)reject)
 RCT_EXTERN_METHOD(stat: (NSString)path resolver:(RCTPromiseResolveBlock)resolve
